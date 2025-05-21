@@ -1,0 +1,411 @@
+/* Grundlæggende body styling */
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 100px;
+    background: linear-gradient(to bottom, #fff, #FFF5E8);
+}
+
+a{
+    color: black;
+}
+
+header{
+    padding: 30px;
+    margin-bottom: -30px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    gap: 300px;
+}
+
+#tilbagePil {
+    width: 30px;
+    height: 30px;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 250px;
+}
+
+.socials-header {
+    display: flex;
+}
+
+.profil {
+    width: 65px;
+    height: auto;
+}
+
+.kurv {
+    width: 80px;
+    height: auto;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+.progress-bar img {
+    width: 60px;
+    height: 40px;
+}
+
+.progress-linje {
+    height: 1px;
+    background-color: black;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+/* Container til spørgsmål */
+.spørgsmål-container {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+/* Spørgsmålstekst */
+.spørgsmål-tekst {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* Bokse til svar - klikbare */
+.svar-boks {
+    background-color: #FFF5E8;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+    user-select: none;
+    text-align: center;
+}
+
+#svarbokseContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#svarbokseContainer h3{
+    font-weight: normal;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.svar-boks:hover {
+   color: white;
+    background-color: #594D3C;
+}
+
+/* Når en svar-boks er valgt */
+.svar-boks.valgt {
+    border-color: #594D3C;
+    background-color: #594D3C;
+    color: white;
+}
+
+/* Knapper */
+.knap-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.knap-container button {
+    background-color: #83B33D;
+    color: black;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    width: 60%;
+    height: 35px;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+.knap-container button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+
+/* Resultat container - skjult til start */
+#resultContainer {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    display: none;
+}
+
+/* Kasse cards container */
+#anbefaletKasseContainer{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+/* Kasse card styling */
+.kasse-card {
+    background-color: #FFF5E8;
+    text-align: center;
+    width: 200px;
+    user-select: none;
+}
+
+.kasse-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.kasse-card h3, .kasse-card h4 {
+    margin: 8px 0;
+    font-weight: 600;
+}
+
+/* Større card til anbefalet kasse */
+.kasse-card.stor {
+    width: 250px;
+    height: 350px;
+
+}
+
+.kasse-card.stor p{
+    margin-top: -5px;
+}
+
+
+/* Knapper i kasse-cards */
+.kasse-card button {
+    background-color: #FFF5E8;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 18px;
+    border: 1px black solid;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 50%;
+    transition: background-color 0.3s;
+    user-select: none;
+}
+
+.kasse-card button.valgt {
+    background-color: #594D3C;
+    cursor: default;
+}
+
+.kasse-card button.ikke-valgt:hover {
+    background-color: #594D3C;
+}
+
+/* Juice produkter container */
+#juiceProdukterContainer {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+#resultContainer h2, h3{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.fortsæt-knap{
+    color: black;
+    background: #83B33D;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 35%;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+}
+
+
+a.fortsæt-link {
+    text-decoration: none;
+}
+
+
+#andreKasserContainer {
+    display: flex;
+    justify-content: space-between; /* Fordel plads jævnt mellem kortene */
+    gap: 20px;                    /* Afstand mellem kortene */
+    max-width: 900px;            /* Evt. fast bredde til at begrænse layoutet */
+    margin: 0 auto; /* Centrer containeren */
+}
+
+/* Juice kort */
+.juice-card {
+    background: white;
+    width: 140px;
+    height: 120px;
+    text-align: center;
+    user-select: none;
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Juice navn */
+.juice-card > div:first-of-type {
+    font-weight: 600;
+    margin: 8px 0 4px 0;
+    font-size: 0.9em;
+    height: 30px;
+    overflow-wrap: break-word;
+}
+
+/* Juice antal - altid synligt */
+.juice-antal {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    background: #FFF5E8;
+    color: black;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.juster-knapper {
+    position: absolute;
+    top: -5px;
+    right:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1;
+}
+
+.juice-card:hover .juster-knapper {
+    opacity: 1;
+}
+
+/* Styling af plus og minus knapper */
+.juster-knapper button {
+    width: 22px;
+    height: 22px;
+    font-size: 1em;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+}
+
+
+.valgt-knap:hover {
+    background-color: #594D3C;
+    color: white;
+}
+.valgt-knap.aktiv {
+    background-color: #594D3C;
+    color: white;
+}
+
+
+.juice-card img{
+    width: 100%;
+    height: 100%;
+}
+
+.valgt-knap {
+    position: relative;  /* Reference for det absolutte billede */
+    padding-right: 40px; /* Reservér plads til checkmark */
+}
+
+.valgt-knap img {
+    position: absolute;
+    right: 5px;         /* Placér checkmark tæt på højre kant */
+    top: 50%;            /* Vertikalt centreret */
+    transform: translateY(-50%);
+    width: 30px;         /* Justér størrelse efter behov */
+    height: 30px;
+    object-fit: contain;
+    pointer-events: none; /* Gør billedet ikke-klikkbart */
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.footer-container1, .footer-container2, .footer-container3 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer-container1 {
+    margin-right: 400px;
+}
+
+
+.footer-container2 {
+    margin-right: 100px;
+}
+
+#logo-footer{
+    width: 200px;
+    margin-bottom: -110px;
+}
+.socials-footer img{
+    width: 35px;
+}
+.socials-footer{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 70px;
+}
+
+.footer-container2, .footer-container3 {
+    line-height: 1px;
+    text-align: center;
+}
+
+.footer-container2, .footer-container3 h3{
+font-size: 15px;
+}
