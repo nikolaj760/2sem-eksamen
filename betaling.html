@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Juicekasse Quiz</title>
+    <title>Betaling</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="betaling.css" />
+    <link rel="icon" type="image/x-icon" href="IMG/favicon.png">
 </head>
 <body>
 
 <header>
-   <div class="header-container">
-        <img id="tilbagePil"  src="IMG/ikoner/pil-tilbage.webp" alt="Pil tilbage">
+    <div class="header-container">
+        <a href="levering.html"><img id="tilbagePil"  src="IMG/ikoner/pil-tilbage.webp" alt="Pil tilbage"></a>
         <img class="logo" src="IMG/logo.png" alt=""Logo>
         <div class="socials-header">
             <a href=""><img class="profil" src="IMG/ikoner/Profil.png" alt="Profil ikon"></a>
             <a href=""><img class="kurv" src="IMG/ikoner/Kurv.png" alt="Kurv ikon"></a>
         </div>
-   </div>
+    </div>
 
     <div class="progress-bar">
         <div class="progress-ikon-1">
@@ -25,48 +26,74 @@
         </div>
         <div class="progress-linje progress-linje-1"></div>
         <div class="progress-ikon-2">
-            <img src="IMG/ikoner/Juice-sort.png" alt="Step 2">
+            <img src="IMG/ikoner/Juice-grøn.png" alt="Step 2">
         </div>
         <div class="progress-linje progress-linje-2"></div>
         <div class="progress-ikon-3">
-            <img src="IMG/ikoner/Leveringsbil.png" alt="Step 3">
+            <img src="IMG/ikoner/Leveringsbil-grøn.png" alt="Step 3">
         </div>
         <div class="progress-linje progress-linje-3"></div>
         <div class="progress-ikon-4">
-            <img src="IMG/ikoner/Betaling.png" alt="Step 4">
+            <img src="IMG/ikoner/Betaling-grøn.png" alt="Step 4">
         </div>
     </div>
 
 </header>
 
-<div class="spørgsmål-container">
 
-    <div id="spørgsmålTekst" class="spørgsmål-tekst"></div>
+<h2>Ordreoversigt</h2>
 
-    <div id="svarbokseContainer"></div>
-
-    <div class="knap-container">
-        <button id="videreKnap" disabled><i>NÆSTE</i></button>
+<div class="ordre-container">
+    <div>
+    <p>Træningskassen</p>
+    <ul>
+        <li>Månedligt</li>
+        <li>Startende mandag 1/6-25</li>
+    </ul>
     </div>
-
+    <div>
+    <p>100,00 kr.</p>
+    </div>
 </div>
 
-<!-- Resultat sektion, skjult til start -->
-<div id="resultContainer">
-    <h2>Vi anbefaler</h2>
+<div class="opdeler"></div>
 
-    <div id="anbefaletKasseContainer"></div>
-
-    <h3>Hvis du hellere vil have en anden kasse</h3>
-    <div id="andreKasserContainer"></div>
-
-    <h3>I kassen får du</h3>
-    <div id="juiceProdukterContainer"></div>
-
-    <a href="#" class="fortsæt-link"><button class="fortsæt-knap"><i>FORTSÆT</i></button></a>
+<div class="totalt-container">
+    <div>
+        <p>I alt</p>
+    </div>
+    <div>
+        <p>100,00 kr.</p>
+    </div>
 </div>
 
 
+<form action="#">
+    <div class="leverings-oplysninger">
+
+        <h2>Betaling</h2>
+
+        <div class="navn-boks2">
+            <input type="text" placeholder="Kortnummer" required />
+            <input type="text" placeholder="Udløbsdato (MM/ÅÅ)" required />
+        </div>
+
+        <div class="navn-boks">
+            <input type="text" placeholder="Fornavn" required />
+            <input type="text" placeholder="Efternavn" required />
+        </div>
+
+        <div class="navn-boks3">
+            <button type="button">Betal med PayPal</button>
+            <button type="button">Betal med MobilePay</button>
+        </div>
+
+        <h4>Påbegyndes pr. d. 1/6-2025</h4>
+        <a href="#"><p>Betingelser og vilkår</p></a>
+
+        <button type="submit" class="fortsæt-knap"><i>BESTIL</i></button>
+    </div>
+</form>
 
 <footer>
     <div class="footer-container1">
@@ -100,6 +127,6 @@
 </footer>
 
 
-<script src="script.js"></script>
+<script src="levering.js"></script>
 </body>
 </html>

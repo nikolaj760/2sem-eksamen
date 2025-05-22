@@ -72,16 +72,38 @@ function visSpørgsmål(index) {
 
         if (brugerensSvar[spørgsmål.id] === tekst) {
             boks.classList.add("valgt");
+            boks.textContent = "";
+            boks.appendChild(document.createTextNode(tekst));
+            const ikon = document.createElement("img");
+            ikon.src = "IMG/ikoner/Tjekmark.png";
+            ikon.classList.add("tjekmark-quiz");
+            boks.appendChild(ikon);
             videreKnapEl.disabled = false;
         }
 
         boks.addEventListener("click", () => {
             // Fjern markering på alle svarbokse
-            svarbokseContainerEl.querySelectorAll(".svar-boks").forEach(el => el.classList.remove("valgt"));
+            svarbokseContainerEl.querySelectorAll(".svar-boks").forEach(el => {
+                el.classList.remove("valgt");
+                // Gendan tekst uden billede hvis det er sat
+                const eksisterendeIkon = el.querySelector(".tjekmark-quiz");
+                if (eksisterendeIkon) eksisterendeIkon.remove();
+            });
             boks.classList.add("valgt");
+            boks.textContent = "";
+            boks.appendChild(document.createTextNode(tekst));
+            const ikon = document.createElement("img");
+            ikon.src = "IMG/ikoner/Tjekmark.png";
+            ikon.classList.add("tjekmark-quiz");
+            boks.appendChild(ikon);
             brugerensSvar[spørgsmål.id] = tekst;
             videreKnapEl.disabled = false;
         });
+
+        // Hvis svaret ikke allerede er valgt, sæt tekstContent normalt
+        if (!(brugerensSvar[spørgsmål.id] === tekst)) {
+            boks.textContent = tekst;
+        }
 
         svarbokseContainerEl.appendChild(boks);
     });
@@ -114,17 +136,17 @@ function beregnAntalJuicerPrUge(svarDagligt, svarPersoner) {
 
     switch (svarDagligt) {
         case "Ét om dagen": basisAntal = 7; break;
-        case "Flere om dagen": basisAntal = 14; break;
-        case "Til deling i familien": basisAntal = 10; break;
-        case "Variende behov": basisAntal = 12; break;
+        case "Flere om dagen": basisAntal = 10; break;
+        case "Til deling i familien": basisAntal = 5; break;
+        case "Variende behov": basisAntal = 8; break;
     }
 
     let personer = 1;
     switch (svarPersoner) {
         case "1 person": personer = 1; break;
-        case "2 personer": personer = 2; break;
-        case "3-4 personer": personer = 4; break;
-        case "mere end 5 personer": personer = 6; break;
+        case "2 personer": personer = 1,5; break;
+        case "3-4 personer": personer = 2; break;
+        case "mere end 5 personer": personer = 3; break;
     }
 
     return basisAntal * personer;
@@ -143,6 +165,12 @@ function visAnbefaling() {
     }
 
     const antalJuicer = beregnAntalJuicerPrUge(brugerensSvar[2], brugerensSvar[3]);
+
+    const antalPerJuice = Math.floor(antalJuicer / juiceProdukter.length);
+    for (const juice of juiceProdukter) {
+        juiceAntal[juice.id] = antalPerJuice;
+        opdaterJuiceAntalUI(juice.id);
+    }
 
     // Fjern linjen: anbefaletKasseContainer.innerHTML = "";
     andreKasserContainer.innerHTML = "";
@@ -168,7 +196,7 @@ function visAnbefaling() {
         valgtCard.querySelector("img").src = valgtKasseData.billede;
         valgtCard.querySelector("img").alt = valgtKasseData.navn;
         valgtCard.querySelector("h3").textContent = valgtKasseData.navn;
-        valgtCard.querySelector("p em").textContent = `Antal juice pr uge: ${antalJuicer}`;
+        // valgtCard.querySelector("p em").textContent = `Antal juice pr uge: ${antalJuicer}`;
         // Opdater knappen hvis den findes
         const valgtKnappen = valgtCard.querySelector(".valgt-knap");
         if (valgtKnappen) {

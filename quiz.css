@@ -25,6 +25,7 @@ header{
 #tilbagePil {
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 .logo {
@@ -88,6 +89,7 @@ header{
 
 /* Bokse til svar - klikbare */
 .svar-boks {
+    position: relative;
     background-color: #FFF5E8;
     padding: 15px;
     margin-bottom: 12px;
@@ -249,6 +251,7 @@ header{
     height: 30px;
     border: none;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 
@@ -408,4 +411,14 @@ footer{
 
 .footer-container2, .footer-container3 h3{
 font-size: 15px;
+}
+
+.tjekmark-quiz {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 30px;
+    pointer-events: none;
 }
