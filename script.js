@@ -356,6 +356,8 @@ if (tilbagePilEl) {
             aktivtSpørgsmålIndex--;
             videreKnapEl.disabled = false;
             visSpørgsmål(aktivtSpørgsmålIndex);
+        } else {
+            window.location.href = "forside.html";
         }
     });
 }
