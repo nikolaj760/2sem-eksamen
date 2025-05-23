@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Levering</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="levering.css" />
+    <link rel="icon" type="image/x-icon" href="IMG/favicon.png">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="quiz.html"><img id="tilbagePil"  src="IMG/ikoner/pil-tilbage.webp" alt="Pil tilbage"></a>
+        <img class="logo" src="IMG/logo.png" alt=""Logo>
+        <div class="socials-header">
+            <a href=""><img class="profil" src="IMG/ikoner/Profil.png" alt="Profil ikon"></a>
+            <a href="betaling.html"><img class="kurv" src="IMG/ikoner/Kurv.png" alt="Kurv ikon"></a>
+        </div>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-ikon-1">
+            <img src="IMG/ikoner/Checkboard-grøn.png" alt="Step 1">
+        </div>
+        <div class="progress-linje progress-linje-1"></div>
+        <div class="progress-ikon-2">
+            <img src="IMG/ikoner/Juice-grøn.png" alt="Step 2">
+        </div>
+        <div class="progress-linje progress-linje-2"></div>
+        <div class="progress-ikon-3">
+            <img src="IMG/ikoner/Leveringsbil-grøn.png" alt="Step 3">
+        </div>
+        <div class="progress-linje progress-linje-3"></div>
+        <div class="progress-ikon-4">
+            <img src="IMG/ikoner/Betaling.png" alt="Step 4">
+        </div>
+    </div>
+
+</header>
+
+
+
+<div class="levering-container">
+    <h2>Hvor ofte ønsker du levering?</h2>
+    <div class="button-container">
+         <button>Ugentligt</button>
+         <button>Hver 2. uge</button>
+        <button>Månedligt</button>
+    </div>
+</div>
+
+<div class="opdeler"></div>
+
+<div class="dag-container">
+    <h2>Hvilken dag på ugen ønsker du at få leveret?</h2>
+    <div class="button-dag-container">
+        <button>Mandag</button>
+        <button>Tirsdag</button>
+        <button>Onsdag</button>
+        <button>Torsdag</button>
+        <button>Fredag</button>
+        <button>Lørdag</button>
+        <button>Søndag</button>
+    </div>
+</div>
+
+<div class="opdeler"></div>
+
+
+<form action="betaling.html">
+    <div class="leverings-oplysninger">
+        <h2>Levering</h2>
+        <div class="navn-boks">
+            <input required type="text" placeholder="Fornavn" />
+            <input required type="text" placeholder="Efternavn" />
+        </div>
+        <div class="navn-boks2">
+            <input required type="text" placeholder="Adresse" />
+            <input required type="number" placeholder="Postnummer" />
+            <input required type="text" placeholder="By" />
+            <input required type="email" placeholder="Mail" />
+            <input required type="number" placeholder="Telefon" />
+        </div>
+
+        <button type="submit" class="fortsæt-knap"><i>FORTSÆT</i></button>
+    </div>
+</form>
+
+<footer>
+    <div class="footer-container1">
+        <img id=logo-footer src="IMG/logo.png" alt="Logo">
+        <i><p>"Når juice gør en forskel"</p></i>
+        <div class="socials-footer">
+            <a href="#"><img class="instagram" src="IMG/ikoner/instagram.png" alt="Instagram"></a>
+            <a href="#"><img class="facebook" src="IMG/ikoner/facebook.png" alt="Instagram"></a>
+            <a href="#"><img class="tiktok" src="IMG/ikoner/tiktok.png" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-container2">
+        <h2><i>KONTAKT</i></h2>
+        <i><h3>Adresse:</h3></i>
+        <p>Priorparken 681, 2605 Brøndby</p>
+        <i><h3>Mail:</h3></i>
+        <p>info@naturaljuice.dk</p>
+        <i><h3>Telefon:</h3></i>
+        <p>+45 70 70 15 80</p>
+    </div>
+    <div class="footer-container3">
+        <h2><i>ÅBNINGSTIDER</i></h2>
+        <i><h3>Mandag - Fredag:</h3></i>
+        <p>08:00 - 15:00</p>
+        <i><h3>Lørdag:</h3></i>
+        <p>Lukket</p>
+        <i><h3>Søndag:</h3></i>
+        <p>Lukket</p>
+    </div>
+
+</footer>
+
+
+<script src="levering.js"></script>
+</body>
+</html>

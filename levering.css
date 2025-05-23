@@ -1,0 +1,273 @@
+/* Grundlæggende body styling */
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 100px;
+    background: linear-gradient(to bottom, #fff, #FFF5E8);
+}
+
+a{
+    color: black;
+}
+
+header{
+    padding: 30px;
+    margin-bottom: -30px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    gap: 300px;
+}
+
+#tilbagePil {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 250px;
+}
+
+
+.socials-header {
+    display: flex;
+}
+
+.profil {
+    width: 65px;
+    height: auto;
+}
+
+.kurv {
+    width: 80px;
+    height: auto;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+.progress-bar img {
+    width: 60px;
+    height: 40px;
+}
+
+.progress-linje {
+    height: 1px;
+    background-color: black;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+
+.progress-linje-1, .progress-linje-2 {
+    background-color: green;
+}
+
+
+.fortsæt-knap{
+    color: black;
+    background: #83B33D;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    font-size: 15px;
+    font-weight: bold;
+    width: 25%;
+    height: 35px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+a.fortsæt-link {
+    text-decoration: none;
+}
+
+
+
+footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.footer-container1, .footer-container2, .footer-container3 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer-container1 {
+    margin-right: 400px;
+}
+
+
+.footer-container2 {
+    margin-right: 100px;
+}
+
+#logo-footer{
+    width: 200px;
+    margin-bottom: -110px;
+}
+.socials-footer img{
+    width: 35px;
+}
+.socials-footer{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 70px;
+}
+
+.footer-container2, .footer-container3 {
+    line-height: 1px;
+    text-align: center;
+}
+
+.footer-container2, .footer-container3 h3 {
+    font-size: 15px;
+}
+
+.levering-container{
+    text-align: center;
+}
+
+.levering-container h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-container button{
+    width: 450px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color: #FFF5E8;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-container button:hover{
+    background-color: #594D3C;
+    color: white;
+    transition-duration: 0.2s;
+}
+
+.button-container button.valgt {
+    background-color: #594D3C;
+    color: white;
+}
+
+.opdeler{
+    height: 1px;
+    background-color: black;
+    margin: 50px 100px;
+}
+
+.dag-container{
+    text-align: center;
+}
+
+.dag-container h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.button-dag-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 0 100px;
+}
+
+.button-dag-container button{
+    width: 100px;
+    height: 80px;
+    border: none;
+    border-radius: 20px;
+    background-color: #FFF5E8;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-dag-container button.valgt {
+    background-color: #594D3C;
+    color: white;
+}
+
+.button-dag-container button:hover{
+    background-color: #594D3C;
+    color: white;
+    transition-duration: 0.2s;
+}
+
+
+
+.leverings-oplysninger h2{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.navn-boks{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.navn-boks2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    gap: 20px;
+
+}
+
+.navn-boks input{
+    text-align: center;
+    width: 245px;
+    height: 25px;
+    border: none;
+    background-color: #F5F5F5;
+    color: black;
+}
+
+.navn-boks2 input{
+    text-align: center;
+    width: 550px;
+    height: 25px;
+    border: none;
+    background-color: #F5F5F5;
+    color: black;
+}
