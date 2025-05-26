@@ -94,6 +94,11 @@ header{
     cursor: pointer;
 }
 
+.fortsæt-knap:hover{
+    background-color: #6d9130;
+
+}
+
 
 a.fortsæt-link {
     text-decoration: none;
@@ -268,7 +273,7 @@ h2{
 
     .header-container {
         flex-direction: row;
-        justify-content: space-between; /* som i forside.css */
+        justify-content: space-between;
         align-items: center;
         padding: 10px 0;
     }

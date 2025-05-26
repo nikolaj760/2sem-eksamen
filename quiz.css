@@ -1,4 +1,3 @@
-/* Grundlæggende body styling */
 body {
     font-family: 'DM Sans', sans-serif;
     margin-bottom: 100px;
@@ -71,7 +70,6 @@ header{
     margin: 0 5px;
 }
 
-/* Container til spørgsmål */
 .spørgsmål-container {
     max-width: 600px;
     margin: auto;
@@ -79,7 +77,6 @@ header{
     padding: 20px;
 }
 
-/* Spørgsmålstekst */
 .spørgsmål-tekst {
     font-weight: bold;
     text-align: center;
@@ -87,7 +84,6 @@ header{
     margin-bottom: 30px;
 }
 
-/* Bokse til svar - klikbare */
 .svar-boks {
     position: relative;
     background-color: #FFF5E8;
@@ -118,14 +114,12 @@ header{
     background-color: #594D3C;
 }
 
-/* Når en svar-boks er valgt */
 .svar-boks.valgt {
     border-color: #594D3C;
     background-color: #594D3C;
     color: white;
 }
 
-/* Knapper */
 .knap-container {
     margin-top: 20px;
     display: flex;
@@ -142,8 +136,13 @@ header{
     height: 35px;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.knap-container button:hover {
+    background-color: #6d9130;
 
 }
+
 
 .knap-container button:disabled {
     background-color: #aaa;
@@ -151,7 +150,7 @@ header{
 }
 
 
-/* Resultat container - skjult til start */
+
 #resultContainer {
     max-width: 900px;
     margin: 40px auto 0 auto;
@@ -254,6 +253,11 @@ header{
     cursor: pointer;
 }
 
+.fortsæt-knap:hover{
+    background-color: #6d9130;
+
+}
+
 
 a.fortsæt-link {
     text-decoration: none;
@@ -268,7 +272,7 @@ a.fortsæt-link {
     margin: 0 auto;
 }
 
-/* Juice kort */
+
 .juice-card {
     background: white;
     width: 140px;
@@ -279,7 +283,7 @@ a.fortsæt-link {
     margin-top: 20px;
 }
 
-/* Juice navn */
+
 .juice-card > div:first-of-type {
     font-weight: 600;
     margin: 8px 0 4px 0;
@@ -288,7 +292,6 @@ a.fortsæt-link {
     overflow-wrap: break-word;
 }
 
-/* Juice antal - altid synligt */
 .juice-antal {
     position: absolute;
     top: 8px;
@@ -323,7 +326,7 @@ a.fortsæt-link {
     opacity: 1;
 }
 
-/* Styling af plus og minus knapper */
+
 .juster-knapper button {
     width: 22px;
     height: 22px;
@@ -352,19 +355,19 @@ a.fortsæt-link {
 }
 
 .valgt-knap {
-    position: relative;  /* Reference for det absolutte billede */
-    padding-right: 40px; /* Reservér plads til checkmark */
+    position: relative;
+    padding-right: 40px;
 }
 
 .valgt-knap img {
     position: absolute;
-    right: 5px;         /* Placér checkmark tæt på højre kant */
-    top: 50%;            /* Vertikalt centreret */
+    right: 5px;
+    top: 50%;
     transform: translateY(-50%);
-    width: 30px;         /* Justér størrelse efter behov */
+    width: 30px;
     height: 30px;
     object-fit: contain;
-    pointer-events: none; /* Gør billedet ikke-klikkbart */
+    pointer-events: none;
 }
 
 footer{
@@ -431,7 +434,7 @@ font-size: 15px;
 
     .header-container {
         flex-direction: row;
-        justify-content: space-between; /* som i forside.css */
+        justify-content: space-between;
         align-items: center;
         padding: 10px 0;
     }
@@ -517,13 +520,13 @@ font-size: 15px;
         font-size: 0.7rem;
     }
 
-    /* Placér sidste juice-kort på anden række */
+
     #juiceProdukterContainer > .juice-card:last-child {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
     }
 
-    /* Make juice cards smaller and reduce juice name font size on small screens */
+
     .juice-card {
         width: 90px;
         height: 90px;

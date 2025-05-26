@@ -152,6 +152,11 @@ button{
     cursor: pointer;
 }
 
+button:hover{
+    background-color: #6d9130;
+
+}
+
 a {
     text-decoration: none;
 }

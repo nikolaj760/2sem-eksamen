@@ -1,4 +1,4 @@
-/* Grundlæggende body styling */
+
 body {
     font-family: 'DM Sans', sans-serif;
     margin-bottom: 200px;
@@ -163,6 +163,10 @@ footer{
     cursor: pointer;
 }
 
+.hero-text button:hover{
+    background-color: #d76834;
+}
+
 .container1 h2{
     text-align: center;
     margin-bottom: 80px;
@@ -207,6 +211,10 @@ footer{
     margin-bottom: 80px;
     margin-top: 80px;
     cursor: pointer;
+}
+
+#cta button:hover{
+    background-color: #d76834;
 }
 
 a {

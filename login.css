@@ -1,4 +1,4 @@
-/* Grundlæggende body styling */
+
 body {
     font-family: 'DM Sans', sans-serif;
     margin-bottom: 100px;
@@ -89,6 +89,11 @@ h2{
     cursor: pointer;
 }
 
+#knap button:hover{
+    background-color: #d76834;
+
+}
+
 #signup {
     text-align: center;
 }
@@ -102,7 +107,7 @@ h2{
 
     .header-container {
         flex-direction: row;
-        justify-content: space-between; /* som i forside.css */
+        justify-content: space-between;
         align-items: center;
         padding: 10px 0;
     }

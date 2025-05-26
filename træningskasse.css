@@ -1,4 +1,3 @@
-/* Grundlæggende body styling */
 body {
     font-family: 'DM Sans', sans-serif;
     margin-bottom: 200px;
@@ -165,6 +164,10 @@ button{
     margin-top: 50px;
     cursor: pointer;
 }
+button:hover{
+    background-color: #d76834;
+
+}
 
 a {
     text-decoration: none;
@@ -212,7 +215,7 @@ a {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center; /* centrerer vertikalt */
+        justify-content: center;
         text-align: center;
         padding: 15px 20px;
     }
@@ -350,7 +353,7 @@ a {
         display: flex;
         align-items: center;
         margin-left: 10px;
-        height: 140px; /* samme højde som billedet */
+        height: 140px;
         font-size: 1rem;
     }
 

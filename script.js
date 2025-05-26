@@ -58,6 +58,53 @@ const juiceProdukterContainer = document.getElementById("juiceProdukterContainer
 
 let aktivtSpørgsmålIndex = 0;
 
+// --- Hjælpefunktioner ---
+
+// Returner svartekst ud fra kasse id
+function kasseIdTilSvarTekst(kasseId) {
+    const mapping = {
+        "Træningskassen": "Træning og restitution",
+        "Immunkassen": "Styrket immunforsvar",
+        "Fokuskassen": "Øget mentalt fokus",
+        "Balanceringskassen": "Generel sund livsstil"
+    };
+    return mapping[kasseId] || null;
+}
+
+// Tilføj tjekmark ikon til en boks og marker som valgt
+function markerSomValgt(boks, tekst) {
+    boks.classList.add("valgt");
+    boks.textContent = "";
+    boks.appendChild(document.createTextNode(tekst));
+    const ikon = document.createElement("img");
+    ikon.src = "IMG/ikoner/Tjekmark.png";
+    ikon.classList.add("tjekmark-quiz");
+    boks.appendChild(ikon);
+}
+
+// Fjern markering og tjekmark ikon fra alle svarbokse
+function fjernMarkeringFraAlle() {
+    svarbokseContainerEl.querySelectorAll(".svar-boks").forEach(el => {
+        el.classList.remove("valgt");
+        const eksisterendeIkon = el.querySelector(".tjekmark-quiz");
+        if (eksisterendeIkon) eksisterendeIkon.remove();
+    });
+}
+
+// Sæt knap til valgt tilstand med tjekmark og disabled
+function sætKnapValgt(knap) {
+    knap.classList.add("aktiv");
+    knap.innerHTML = `<span>Valgt</span><img src="IMG/ikoner/Tjekmark.png" alt="" class="checkmark-ikon">`;
+    knap.disabled = true;
+}
+
+// Sæt knap til ikke valgt tilstand med tekst "Vælg" og enabled
+function sætKnapIkkeValgt(knap) {
+    knap.classList.remove("aktiv");
+    knap.innerHTML = `Vælg`;
+    knap.disabled = false;
+}
+
 // --- FUNKTIONER ---
 
 function visSpørgsmål(index) {
@@ -68,42 +115,22 @@ function visSpørgsmål(index) {
     spørgsmål.svarMuligheder.forEach((tekst) => {
         const boks = document.createElement("div");
         boks.classList.add("svar-boks");
-        boks.textContent = tekst;
 
+        // Hvis svaret er valgt, marker det med tjekmark
         if (brugerensSvar[spørgsmål.id] === tekst) {
-            boks.classList.add("valgt");
-            boks.textContent = "";
-            boks.appendChild(document.createTextNode(tekst));
-            const ikon = document.createElement("img");
-            ikon.src = "IMG/ikoner/Tjekmark.png";
-            ikon.classList.add("tjekmark-quiz");
-            boks.appendChild(ikon);
+            markerSomValgt(boks, tekst);
             videreKnapEl.disabled = false;
+        } else {
+            boks.textContent = tekst;
         }
 
         boks.addEventListener("click", () => {
-            // Fjern markering på alle svarbokse
-            svarbokseContainerEl.querySelectorAll(".svar-boks").forEach(el => {
-                el.classList.remove("valgt");
-                // Gendan tekst uden billede hvis det er sat
-                const eksisterendeIkon = el.querySelector(".tjekmark-quiz");
-                if (eksisterendeIkon) eksisterendeIkon.remove();
-            });
-            boks.classList.add("valgt");
-            boks.textContent = "";
-            boks.appendChild(document.createTextNode(tekst));
-            const ikon = document.createElement("img");
-            ikon.src = "IMG/ikoner/Tjekmark.png";
-            ikon.classList.add("tjekmark-quiz");
-            boks.appendChild(ikon);
+            // Når en boks klikkes, fjern markering på alle, marker denne og gem svaret
+            fjernMarkeringFraAlle();
+            markerSomValgt(boks, tekst);
             brugerensSvar[spørgsmål.id] = tekst;
             videreKnapEl.disabled = false;
         });
-
-        // Hvis svaret ikke allerede er valgt, sæt tekstContent normalt
-        if (!(brugerensSvar[spørgsmål.id] === tekst)) {
-            boks.textContent = tekst;
-        }
 
         svarbokseContainerEl.appendChild(boks);
     });
@@ -144,7 +171,7 @@ function beregnAntalJuicerPrUge(svarDagligt, svarPersoner) {
     let personer = 1;
     switch (svarPersoner) {
         case "1 person": personer = 1; break;
-        case "2 personer": personer = 1,5; break;
+        case "2 personer": personer = 1.5; break;
         case "3-4 personer": personer = 2; break;
         case "mere end 5 personer": personer = 3; break;
     }
@@ -158,21 +185,14 @@ function visAnbefaling() {
 
     const valgtKasseId = findJuiceKasse(brugerensSvar[1]);
     const valgtKasseData = juiceKasser.find(k => k.id === valgtKasseId);
-
-    if (!valgtKasseData) {
-        anbefaletKasseContainer.innerHTML = "<p style='color:red;'>Fejl: Ingen anbefalet kasse fundet.</p>";
-        return;
-    }
-
     const antalJuicer = beregnAntalJuicerPrUge(brugerensSvar[2], brugerensSvar[3]);
-
     const antalPerJuice = Math.floor(antalJuicer / juiceProdukter.length);
     for (const juice of juiceProdukter) {
         juiceAntal[juice.id] = antalPerJuice;
         opdaterJuiceAntalUI(juice.id);
     }
 
-    // Fjern linjen: anbefaletKasseContainer.innerHTML = "";
+    // Clear containers for alternative kasser and juice produkter
     andreKasserContainer.innerHTML = "";
     juiceProdukterContainer.innerHTML = "";
 
@@ -188,7 +208,7 @@ function visAnbefaling() {
         <span>Valgt</span>
         <img src="IMG/ikoner/Tjekmark.png" alt="">
         </button>
-        <a href=""><p>Læs mere</p></a>
+        <a href="træningskasse.html"><p>Læs mere</p></a>
       `;
         anbefaletKasseContainer.appendChild(valgtCard);
     } else {
@@ -196,45 +216,30 @@ function visAnbefaling() {
         valgtCard.querySelector("img").src = valgtKasseData.billede;
         valgtCard.querySelector("img").alt = valgtKasseData.navn;
         valgtCard.querySelector("h3").textContent = valgtKasseData.navn;
-        // valgtCard.querySelector("p em").textContent = `Antal juice pr uge: ${antalJuicer}`;
-        // Opdater knappen hvis den findes
         const valgtKnappen = valgtCard.querySelector(".valgt-knap");
         if (valgtKnappen) {
-            valgtKnappen.classList.add("aktiv");
-            valgtKnappen.innerHTML = `<span>Valgt</span><img src="IMG/ikoner/Tjekmark.png" alt="" class="checkmark-ikon">`;
-            valgtKnappen.disabled = false;
+            sætKnapValgt(valgtKnappen);
         }
     }
 
-    // Gør knappen i det anbefalede kort klikbar og tilføj eventlistener
+    // Håndter klik på anbefalet kasse knap
     const anbefaletKnap = valgtCard.querySelector(".valgt-knap");
     if (anbefaletKnap) {
         anbefaletKnap.disabled = false;
-        anbefaletKnap.classList.add("aktiv");
-        anbefaletKnap.innerHTML = `<span>Valgt</span><img src="IMG/ikoner/Tjekmark.png" alt="" class="checkmark-ikon">`;
+        sætKnapValgt(anbefaletKnap);
         anbefaletKnap.addEventListener("click", () => {
-            // Sæt alle andre knapper tilbage til "Vælg" og ikke aktiv
+            // Fjern aktiv og sæt "Vælg" på alle andre knapper i alternative kasser
             andreKasserContainer.querySelectorAll(".valgt-knap").forEach(btn => {
-                btn.classList.remove("aktiv");
-                btn.innerHTML = `Vælg`;
-                btn.disabled = false;
+                sætKnapIkkeValgt(btn);
             });
-            // Sæt denne knap til aktiv, "Valgt" og disabled
-            anbefaletKnap.classList.add("aktiv");
-            anbefaletKnap.innerHTML = `<span>Valgt</span><img src="IMG/ikoner/Tjekmark.png" alt="" class="checkmark-ikon">`;
-            anbefaletKnap.disabled = true;
-            // Opdater brugerensSvar[1] til den relevante tekstværdi
-            const svarTekst = Object.entries({
-                "Træningskassen": "Træning og restitution",
-                "Immunkassen": "Styrket immunforsvar",
-                "Fokuskassen": "Øget mentalt fokus",
-                "Balanceringskassen": "Generel sund livsstil"
-            }).find(([id, tekst]) => id === valgtKasseData.id)?.[1] || null;
+            // Marker denne knap som valgt
+            sætKnapValgt(anbefaletKnap);
+            // Opdater brugerensSvar[1] med korrekt tekst
+            const svarTekst = kasseIdTilSvarTekst(valgtKasseData.id);
             if (svarTekst) {
                 brugerensSvar[1] = svarTekst;
             }
         });
-        // Sæt knappen til valgt og disabled fra start
         anbefaletKnap.disabled = true;
     }
 
@@ -250,42 +255,22 @@ function visAnbefaling() {
           `;
             const knap = card.querySelector(".vælg-knap");
             knap.addEventListener("click", () => {
-                // Fjern aktiv klasse og sæt tekst til "Vælg" for alle valgt-knap knapper
+                // Fjern aktiv og sæt "Vælg" på alle knapper i alternative kasser
                 andreKasserContainer.querySelectorAll(".valgt-knap").forEach(btn => {
-                    btn.classList.remove("aktiv");
-                    btn.innerHTML = `Vælg`;
-                    btn.disabled = false;
+                    sætKnapIkkeValgt(btn);
                 });
+                // Sæt anbefalet kasse knap til ikke valgt
                 const valgtKnappen = anbefaletKasseContainer.querySelector(".valgt-knap");
                 if (valgtKnappen) {
-                    valgtKnappen.classList.remove("aktiv");
-                    valgtKnappen.innerHTML = `Vælg`;
-                    valgtKnappen.disabled = false;
+                    sætKnapIkkeValgt(valgtKnappen);
                 }
-
-                // Opdater brugerensSvar[1] til det nye svar
-                const svarTekst = Object.entries({
-                    "Træningskassen": "Træning og restitution",
-                    "Immunkassen": "Styrket immunforsvar",
-                    "Fokuskassen": "Øget mentalt fokus",
-                    "Balanceringskassen": "Generel sund livsstil"
-                }).find(([id, tekst]) => id === kasse.id)?.[1] || null;
-
+                // Opdater brugerensSvar[1] med korrekt tekst
+                const svarTekst = kasseIdTilSvarTekst(kasse.id);
                 if (svarTekst) {
                     brugerensSvar[1] = svarTekst;
                 }
-
-                // Opdater knap i anbefalet kasse til aktiv og tekst "Valgt"
-                if (valgtKnappen) {
-                    valgtKnappen.classList.remove("aktiv");
-                    valgtKnappen.innerHTML = `Vælg`;
-                    valgtKnappen.disabled = false;
-                }
-
-                // Opdater trykket knap til aktiv og tekst "Valgt" og disabled
-                knap.classList.add("aktiv");
-                knap.innerHTML = `<span>Valgt</span><img src="IMG/ikoner/Tjekmark.png" alt="" class="checkmark-ikon">`;
-                knap.disabled = true;
+                // Marker den trykkede knap som valgt
+                sætKnapValgt(knap);
             });
             andreKasserContainer.appendChild(card);
         }
@@ -357,7 +342,7 @@ if (tilbagePilEl) {
             videreKnapEl.disabled = false;
             visSpørgsmål(aktivtSpørgsmålIndex);
         } else {
-            window.location.href = "forside.html";
+            window.location.href = "start-quiz.html";
         }
     });
 }
