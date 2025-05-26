@@ -155,3 +155,138 @@ button{
 a {
     text-decoration: none;
 }
+
+
+@media screen and (max-width: 768px) {
+    body{
+        padding-bottom: 100px;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between; /* som i forside.css */
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: -80px;
+        transform: translateX(-50%);
+        height: 250px;
+        z-index: 2;
+    }
+
+    .socials-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .profil {
+        width: 65px;
+        height: auto;
+        margin-left: -25px;
+        margin-right: 0;
+    }
+
+    .kurv {
+        width: 80px;
+        height: auto;
+        margin-left: -5px;
+    }
+
+    .progress-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 10px 20px;
+        gap: 10px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .progress-bar img {
+        width: 50px;
+        height: 35px;
+    }
+
+    .progress-linje {
+        height: 1px;
+        margin: 0 5px;
+    }
+
+    #checkboard{
+        margin-top: 30px;
+        width: 250px;
+    }
+
+    footer {
+    display: none;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    body {
+        padding-bottom: 250px;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0px;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: -70px;
+        height: 200px;
+        z-index: 2;
+    }
+
+    .socials-header {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: -40px;
+    }
+
+    .profil {
+        width: 50px;
+        height: auto;
+    }
+
+    .kurv {
+        width: 60px;
+        height: auto;
+    }
+
+
+    .progress-bar {
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 5px;
+    }
+
+    .progress-bar img {
+        width: 40px;
+        height: 30px;
+    }
+
+    .progress-linje {
+        height: 1px;
+        margin: 0 3px;
+    }
+
+    footer {
+        display: none;
+    }
+}

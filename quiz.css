@@ -158,7 +158,7 @@ header{
     display: none;
 }
 
-/* Kasse cards container */
+
 #anbefaletKasseContainer{
     display: flex;
     gap: 20px;
@@ -167,7 +167,7 @@ header{
     justify-content: center;
 }
 
-/* Kasse card styling */
+
 .kasse-card {
     background-color: #FFF5E8;
     text-align: center;
@@ -187,7 +187,7 @@ header{
     font-weight: 600;
 }
 
-/* Større card til anbefalet kasse */
+
 .kasse-card.stor {
     width: 250px;
     height: 350px;
@@ -199,7 +199,7 @@ header{
 }
 
 
-/* Knapper i kasse-cards */
+
 .kasse-card button {
     background-color: #FFF5E8;
     border: none;
@@ -225,7 +225,7 @@ header{
     background-color: #594D3C;
 }
 
-/* Juice produkter container */
+
 #juiceProdukterContainer {
     display: flex;
     gap: 50px;
@@ -262,10 +262,10 @@ a.fortsæt-link {
 
 #andreKasserContainer {
     display: flex;
-    justify-content: space-between; /* Fordel plads jævnt mellem kortene */
-    gap: 20px;                    /* Afstand mellem kortene */
-    max-width: 900px;            /* Evt. fast bredde til at begrænse layoutet */
-    margin: 0 auto; /* Centrer containeren */
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 /* Juice kort */
@@ -421,4 +421,244 @@ font-size: 15px;
     width: 40px;
     height: 30px;
     pointer-events: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    body{
+        padding-bottom: 100px;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between; /* som i forside.css */
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: -80px;
+        transform: translateX(-50%);
+        height: 250px;
+        z-index: 2;
+    }
+
+    .socials-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .profil {
+        width: 65px;
+        height: auto;
+        margin-left: -25px;
+        margin-right: 0;
+    }
+
+    .kurv {
+        width: 80px;
+        height: auto;
+        margin-left: -5px;
+    }
+
+    .progress-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 10px 20px;
+        gap: 10px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .progress-bar img {
+        width: 50px;
+        height: 35px;
+    }
+
+    .progress-linje {
+        height: 1px;
+        margin: 0 5px;
+    }
+
+
+    footer {
+        display: none;
+    }
+
+    .kasse-card.stor {
+        width: 200px;
+        height: 350px;
+        margin-bottom: 20px;
+    }
+
+    #andreKasserContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 15px;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    #juiceProdukterContainer {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 0 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto;
+        gap: 15px;
+        row-gap: 30px;
+        box-sizing: border-box;
+        font-size: 0.7rem;
+    }
+
+    /* Placér sidste juice-kort på anden række */
+    #juiceProdukterContainer > .juice-card:last-child {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    /* Make juice cards smaller and reduce juice name font size on small screens */
+    .juice-card {
+        width: 90px;
+        height: 90px;
+    }
+    .juice-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+
+@media screen and (max-width: 480px) {
+    body {
+        padding-bottom: 250px;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0px;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: -70px;
+        height: 200px;
+        z-index: 2;
+    }
+
+    .socials-header {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: -40px;
+    }
+
+    .profil {
+        width: 50px;
+        height: auto;
+    }
+
+    .kurv {
+        width: 60px;
+        height: auto;
+    }
+
+    .progress-bar {
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 5px;
+    }
+
+    .progress-bar img {
+        width: 40px;
+        height: 30px;
+    }
+
+    .progress-linje {
+        height: 1px;
+        margin: 0 3px;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .kasse-card.stor {
+        width: 200px;
+        height: 300px;
+        margin-bottom: 20px;
+    }
+
+    .valgt-knap img {
+        width: 25px !important;
+        height: 25px !important;
+        right: 0;
+        top: 45%;
+    }
+
+    #andreKasserContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 10px;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .kasse-card {
+        width: 150px;
+        height: auto;
+    }
+
+    .kasse-card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+
+    #juiceProdukterContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto;
+        gap: 10px;
+        row-gap: 20px;
+        max-width: 320px;
+        margin: 0 auto;
+        padding: 0 10px;
+        box-sizing: border-box;
+        font-size: 0.6rem;
+    }
+
+    #juiceProdukterContainer > .juice-card:last-child {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .juice-card {
+        width: 80px;
+        height: 80px;
+    }
+    .juice-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .juice-card > div:first-of-type {
+        font-size: 0.65em;
+    }
+
 }
