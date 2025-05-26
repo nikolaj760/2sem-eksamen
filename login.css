@@ -1,0 +1,234 @@
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 100px;
+    background: linear-gradient(to bottom, #fff, #FFF5E8);
+    padding-bottom: 200px;
+}
+
+
+
+a{
+    color: black;
+    text-decoration: underline;
+}
+
+header{
+    padding: 30px;
+    margin-bottom: -30px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+#tilbagePil {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 400px;
+    margin-top: 100px;
+}
+
+h2{
+    text-align: center;
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.login-container input{
+    width: 60%;
+    height: 50px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: rgba(211, 211, 211, 0.53);
+}
+
+.knapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 400px;
+}
+
+#formular, h2{
+    margin-top: 200px;
+}
+
+#knap button{
+    height: 40px;
+    width: 250px;
+    border: none;
+    font-weight: bold;
+    background-color: #FA7B3C;
+    font-size: 15px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+#knap button:hover{
+    background-color: #d76834;
+
+}
+
+#signup {
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    body{
+        padding-bottom: 100px;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    #tilbagePil {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 10%;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: -100px;
+        height: 300px;
+        margin-top: 100px;
+    }
+
+    .login-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+    .login-container input{
+        width: 70%;
+        height: 50px;
+        text-align: center;
+        border: 1px solid black;
+        background-color: rgba(211, 211, 211, 0.53);
+    }
+
+    .knapper{
+        gap: 80px;
+    }
+
+    #formular, h2{
+        margin-top: 200px;
+    }
+
+    #knap button{
+        height: 35px;
+        width: 120px;
+        font-size: 15px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    body {
+        padding-bottom: 250px;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0px;
+        padding: 10px 15px;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: -70px;
+        height: 200px;
+        z-index: 2;
+    }
+
+    .socials-header {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: -40px;
+    }
+
+    .profil {
+        width: 50px;
+        height: auto;
+    }
+
+    .kurv {
+        width: 60px;
+        height: auto;
+    }
+
+
+    .progress-bar {
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 5px;
+    }
+
+    .progress-bar img {
+        width: 40px;
+        height: 30px;
+    }
+
+    .progress-linje {
+        height: 1px;
+        margin: 0 3px;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    body {
+        padding-bottom: 550px;
+    }
+}
