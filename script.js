@@ -1,4 +1,3 @@
-// --- DATA ---
 
 const juiceKasser = [
     { id: "Træningskassen", navn: "Træningskassen", billede: "IMG/produkter/træningskassen.png" },
@@ -35,7 +34,7 @@ const spørgsmålListe = [
     {
         id: 2,
         tekst: "Hvad passer bedst til din hverdag?",
-        svarMuligheder: ["Ét om dagen", "Flere om dagen", "Til deling i familien", "Variende behov"]
+        svarMuligheder: ["Én om dagen", "Flere om dagen", "Til deling i familien", "Variende behov"]
     },
     {
         id: 3,
@@ -44,7 +43,7 @@ const spørgsmålListe = [
     }
 ];
 
-// --- HTML ELEMENTER ---
+
 
 const spørgsmålTekstEl = document.getElementById("spørgsmålTekst");
 const svarbokseContainerEl = document.getElementById("svarbokseContainer");
@@ -58,9 +57,7 @@ const juiceProdukterContainer = document.getElementById("juiceProdukterContainer
 
 let aktivtSpørgsmålIndex = 0;
 
-// --- Hjælpefunktioner ---
 
-// Returner svartekst ud fra kasse id
 function kasseIdTilSvarTekst(kasseId) {
     const mapping = {
         "Træningskassen": "Træning og restitution",
@@ -71,7 +68,7 @@ function kasseIdTilSvarTekst(kasseId) {
     return mapping[kasseId] || null;
 }
 
-// Tilføj tjekmark ikon til en boks og marker som valgt
+
 function markerSomValgt(boks, tekst) {
     boks.classList.add("valgt");
     boks.textContent = "";
@@ -82,7 +79,7 @@ function markerSomValgt(boks, tekst) {
     boks.appendChild(ikon);
 }
 
-// Fjern markering og tjekmark ikon fra alle svarbokse
+
 function fjernMarkeringFraAlle() {
     svarbokseContainerEl.querySelectorAll(".svar-boks").forEach(el => {
         el.classList.remove("valgt");
@@ -91,21 +88,21 @@ function fjernMarkeringFraAlle() {
     });
 }
 
-// Sæt knap til valgt tilstand med tjekmark og disabled
+
 function sætKnapValgt(knap) {
     knap.classList.add("aktiv");
     knap.innerHTML = `<span>Valgt</span><img src="IMG/ikoner/Tjekmark.png" alt="" class="checkmark-ikon">`;
     knap.disabled = true;
 }
 
-// Sæt knap til ikke valgt tilstand med tekst "Vælg" og enabled
+
 function sætKnapIkkeValgt(knap) {
     knap.classList.remove("aktiv");
     knap.innerHTML = `Vælg`;
     knap.disabled = false;
 }
 
-// --- FUNKTIONER ---
+
 
 function visSpørgsmål(index) {
     const spørgsmål = spørgsmålListe[index];
@@ -116,7 +113,7 @@ function visSpørgsmål(index) {
         const boks = document.createElement("div");
         boks.classList.add("svar-boks");
 
-        // Hvis svaret er valgt, marker det med tjekmark
+
         if (brugerensSvar[spørgsmål.id] === tekst) {
             markerSomValgt(boks, tekst);
             videreKnapEl.disabled = false;
@@ -125,7 +122,7 @@ function visSpørgsmål(index) {
         }
 
         boks.addEventListener("click", () => {
-            // Når en boks klikkes, fjern markering på alle, marker denne og gem svaret
+
             fjernMarkeringFraAlle();
             markerSomValgt(boks, tekst);
             brugerensSvar[spørgsmål.id] = tekst;
@@ -135,7 +132,7 @@ function visSpørgsmål(index) {
         svarbokseContainerEl.appendChild(boks);
     });
 
-    // Tilføj forklaringstekst under svar-bokse
+
     const forklaring = document.createElement("h3");
     const forklaringTekster = {
         1: "Fortæl os, hvad dit mål er, så anbefaler vi en kasse, der matcher dine behov.",
@@ -192,11 +189,11 @@ function visAnbefaling() {
         opdaterJuiceAntalUI(juice.id);
     }
 
-    // Clear containers for alternative kasser and juice produkter
+
     andreKasserContainer.innerHTML = "";
     juiceProdukterContainer.innerHTML = "";
 
-    // Anbefalet kasse stort card
+
     let valgtCard;
     if (!anbefaletKasseContainer.querySelector(".kasse-card.stor")) {
         valgtCard = document.createElement("div");
@@ -222,19 +219,19 @@ function visAnbefaling() {
         }
     }
 
-    // Håndter klik på anbefalet kasse knap
+
     const anbefaletKnap = valgtCard.querySelector(".valgt-knap");
     if (anbefaletKnap) {
         anbefaletKnap.disabled = false;
         sætKnapValgt(anbefaletKnap);
         anbefaletKnap.addEventListener("click", () => {
-            // Fjern aktiv og sæt "Vælg" på alle andre knapper i alternative kasser
+
             andreKasserContainer.querySelectorAll(".valgt-knap").forEach(btn => {
                 sætKnapIkkeValgt(btn);
             });
-            // Marker denne knap som valgt
+
             sætKnapValgt(anbefaletKnap);
-            // Opdater brugerensSvar[1] med korrekt tekst
+
             const svarTekst = kasseIdTilSvarTekst(valgtKasseData.id);
             if (svarTekst) {
                 brugerensSvar[1] = svarTekst;
@@ -243,7 +240,7 @@ function visAnbefaling() {
         anbefaletKnap.disabled = true;
     }
 
-    // Andre kasser små cards med "Vælg"
+
     juiceKasser.forEach(kasse => {
         if (kasse.id !== valgtKasseId) {
             const card = document.createElement("div");
@@ -255,28 +252,28 @@ function visAnbefaling() {
           `;
             const knap = card.querySelector(".vælg-knap");
             knap.addEventListener("click", () => {
-                // Fjern aktiv og sæt "Vælg" på alle knapper i alternative kasser
+
                 andreKasserContainer.querySelectorAll(".valgt-knap").forEach(btn => {
                     sætKnapIkkeValgt(btn);
                 });
-                // Sæt anbefalet kasse knap til ikke valgt
+
                 const valgtKnappen = anbefaletKasseContainer.querySelector(".valgt-knap");
                 if (valgtKnappen) {
                     sætKnapIkkeValgt(valgtKnappen);
                 }
-                // Opdater brugerensSvar[1] med korrekt tekst
+
                 const svarTekst = kasseIdTilSvarTekst(kasse.id);
                 if (svarTekst) {
                     brugerensSvar[1] = svarTekst;
                 }
-                // Marker den trykkede knap som valgt
+
                 sætKnapValgt(knap);
             });
             andreKasserContainer.appendChild(card);
         }
     });
 
-    // Juiceprodukter med antal og plus/minus knapper
+
     juiceProdukter.forEach(juice => {
         const card = document.createElement("div");
         card.classList.add("juice-card");
@@ -304,12 +301,12 @@ function visAnbefaling() {
 
         juiceProdukterContainer.appendChild(card);
     });
-    // Opdater progress bar ved gennemført quiz
+
     function opdaterProgressBar() {
         const ikon2 = document.querySelector(".progress-ikon-2 img");
         const streg1 = document.querySelector(".progress-linje-1");
 
-        if (ikon2) ikon2.src = "IMG/ikoner/Juice-grøn.png"; // Grøn version af ikon
+        if (ikon2) ikon2.src = "IMG/ikoner/Juice-grøn.png";
         if (streg1) streg1.style.backgroundColor = "green";
     }
 
@@ -324,7 +321,7 @@ function opdaterJuiceAntalUI(juiceId) {
     }
 }
 
-// --- Navigation knapper ---
+
 videreKnapEl.addEventListener("click", () => {
     if (aktivtSpørgsmålIndex < spørgsmålListe.length - 1) {
         aktivtSpørgsmålIndex++;
@@ -347,5 +344,5 @@ if (tilbagePilEl) {
     });
 }
 
-// --- Start quiz ---
+
 visSpørgsmål(aktivtSpørgsmålIndex);
